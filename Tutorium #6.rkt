@@ -10,8 +10,8 @@
 
 ; AUFGABEN --------------------------------------- ;
 (define (modulieren-rek zahl teiler)
-  (let [(letzte (remainder zahl 10))
-        (rest (quotient zahl 10))]
+  (let [[letzte (remainder zahl 10)]
+        [rest (quotient zahl 10)]]
     (if (= zahl 0)
         0
         (+ (modulo letzte teiler)
