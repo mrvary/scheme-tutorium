@@ -44,6 +44,8 @@
 (fizzbuzz-summe 15)
 
 
+; STRUKTUREN --------------------------------------- ;
+
 ;(cons (cons 3 (cons 3 null)) (cons 3 (cons 3 (cons 3 3))))
 
 ; nil muss in Racket erst noch definiert werden,
