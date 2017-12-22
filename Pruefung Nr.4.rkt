@@ -1,6 +1,9 @@
 #lang racket
 #|
 Prüfung 4
+Diese Stimme gerhört dem Mann, der Sie die ganze Zeit durch die Gegend schaukelt.
+Sollte Ihnen diese Fahrt nicht gefallen haben, schicken Sie doch einfach
+mal Ihre Schwiegereltern vorbei.
 |#
 
 ; Aufgabe 1
