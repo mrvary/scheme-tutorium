@@ -61,60 +61,36 @@
 (entferne "scheme" "mc")
 
         
-
-; HILFSFUNKTIONEN
-; ending
-(define (ending word)
-  (define (recur letters)
-    (if (empty? (cdr letters))
-        (car letters)
-        (recur (cdr letters))))
-  (recur (string->list word)))
-
-(define (ending2 word)
-  (string (last (string->list word))))
-
-;(ending "torben")
-;(ending "12345")
-;(ending "the world will end")
-
 ; butlast
-(define (butlast word)
-  (define (rec letters)
-    (if (empty? (cdr letters))
-        '()
-        (cons (car letters) (rec (cdr letters)))))
-  (list->string (rec (string->list word))))
+; ending
+; vowel?
 
-;(butlast "butt")
-;(butlast "12921")
+(define (contains? l c)
+  (cond ((empty? l) #f)
+        ((equal? (car l) c) #t)
+        (else (contains? (cdr l) c))))
 
-; contains
-(define (contains? coll el)
-  (cond ((empty? coll) #f)
-        ((equal? (car coll) el) #t)
-        (else (contains? (cdr coll) el))))
+(define (vowel? c) (contains? (string->list "aeiouy") c))
 
-;(contains? '(1 2) 1)
-;(contains? '("a" "b" "c") "b")
-;(contains? '("a" "b") 1)     
+(define (butlast l)
+  (if (empty? (cdr l))
+      '()
+      (cons (car l) (butlast (cdr l)))))
 
-; vowel
-(define (vowel? letter)
-  (contains? '(#\a #\e #\i #\o #\u #\y) letter))
+(define (butlast1 l)
+  (reverse (cdr (reverse l))))
 
-;(vowel? "a")
-;(vowel? "b")
+(define (ending l)
+  (if (empty? (cdr l))
+      (car l)
+      (ending (cdr l))))
 
 (define (plural word)
-  (cond ((and (vowel? (ending word))
-              (vowel? (ending (butlast word)))) (string-append word "s"))
-        ((vowel? (ending word)) (string-append (butlast word) "ies"))
+  (define word-l (string->list word))
+  (cond ((and (vowel? (ending word-l))
+              (vowel? (ending (butlast word-l)))) (string-append word "s"))
+        ((vowel? (ending word-l)) (string-append (butlast word) "ies"))
         (else (string-append word "s"))))
-
-(plural "computer")
-(plural "fly")
-(plural "toy")
 
 
                
